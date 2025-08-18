@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📒All Confessions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #ffe6f0, #fff0f5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .confession-card {
+            background-color: #fff0f5;
+            border: 2px solid #ff99cc;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+            padding: 15px;
+        }
+
+        .btn-love {
+            background-color: #ff66b2;
+            border: none;
+            color: white;
+        }
+
+        .btn-love:hover {
+            background-color: #ff3385;
+        }
+
+        h2 {
+            color: #cc0066;
+        }
+
+        .date-text {
+            color: #cc6699;
+            font-size: 0.9rem;
+        }
+
+        a.btn-outline-love {
+            border-color: #ff66b2;
+            color: #ff66b2;
+        }
+
+        a.btn-outline-love:hover {
+            background-color: #ff66b2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">All Confessions</h2>
+
+    <div class="mb-4 text-center">
+        <a href="{{ url_for('homepage') }}" class="btn btn-outline-love">➕ Submit Another Confession</a>
+    </div>
+
+    {% if confessions %}
+        <div class="list-group">
+            {% for confession in confessions %}
+                <div class="confession-card mb-3">
+                    <p class="mb-2">{{ confession.message }}</p>
+                    {% if confession.created_at %}
+                        <div class="text-end date-text">Posted on {{ confession.created_at.split("T")[0] }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No confessions yet. Be the first to share your heart </p>
+    {% endif %}
+</div>
+
+</body>
+</html>
