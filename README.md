@@ -1,0 +1,16 @@
+# Confessly 😶‍🌫️
+
+Confessly is a simple web app where people can **share anonymous confessions safely**.  
+Built using **Flask + Supabase**, and deployed on **Render**.
+
+🌐 Live Demo: [https://confessly-foke.onrender.com](https://confessly-foke.onrender.com)
+
+## Features
+- Anonymous confessions
+- Secure backend with Supabase
+- Clean and minimal UI
+
+## Tech Stack
+- Python (Flask)
+- Supabase
+- Render (deployment)
