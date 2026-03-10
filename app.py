@@ -1,35 +1,52 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, render_template, request, redirect, url_for
+from pymongo import MongoClient
+from datetime import datetime
 import os
-from supabase import create_client, Client
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
-
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+# MongoDB connection
+MONGO_URI = os.getenv("MONGO_URI")
+
+client = MongoClient(MONGO_URI)
+db = client["confessly"]
+collection = db["confessions"]
+
+
+@app.route("/", methods=["GET", "POST"])
 def homepage():
-    if request.method == 'POST':
-        message = request.form.get('message')
-        
-        if message and message.strip():  # check for empty input
-            data_to_insert = {"message": message.strip()}
-            supabase.table('confessions').insert(data_to_insert).execute()
-        
-        return redirect(url_for('show_all_confessions'))
 
-    return render_template('index.html')
+    if request.method == "POST":
 
-@app.route('/confessions')
+        message = request.form.get("message")
+
+        if message and message.strip():
+
+            confession = {
+                "message": message.strip(),
+                "created_at": datetime.utcnow()
+            }
+
+            collection.insert_one(confession)
+
+        return redirect(url_for("show_all_confessions"))
+
+    return render_template("index.html")
+
+
+@app.route("/confessions")
 def show_all_confessions():
-    response = supabase.table('confessions').select('*').order('created_at', desc=True).execute()
-    all_confessions = response.data
-    return render_template('confessions.html', confessions=all_confessions)
 
-if __name__ == '__main__':
+    confessions = list(collection.find().sort("created_at", -1))
+
+    return render_template(
+        "confessions.html",
+        confessions=confessions
+    )
+
+
+if __name__ == "__main__":
     app.run(debug=True)
