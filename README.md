@@ -1,16 +1,61 @@
-# Confessly 😶‍🌫️
+# Confessly 💌
 
-Confessly is a simple web app where people can **share anonymous confessions safely**.  
-Built using **Flask + Supabase**, and deployed on **Railway**.
+**Confessly** is a simple web app where people can share **anonymous confessions** and read confessions from others.
 
-🌐 Live Demo: [https://web-production-c8b2c.up.railway.app/](https://web-production-c8b2c.up.railway.app/)
+It creates a small safe space where anyone can express their thoughts without revealing their identity.
 
-## Features
-- Anonymous confessions
-- Secure backend with Supabase
-- Clean and minimal UI
+---
 
-## Tech Stack
-- Python (Flask)
-- Supabase
-- Railway (deployment)
+## 🌐 Live App
+
+Try it here:
+
+coming soon
+
+---
+
+## ✨ Features
+
+* 🕶️ Completely **anonymous confessions**
+* 📜 Read confessions from others
+* ⚡ Fast and minimal interface
+* 🎨 Clean responsive design
+* 💾 Secure data storage
+
+---
+
+## 🛠 Tech Stack
+
+**Backend**
+
+* Python
+* Flask
+
+**Database**
+
+* MongoDB Atlas
+
+**Frontend**
+
+* HTML
+* CSS
+* Bootstrap
+
+**Deployment**
+
+* Render
+
+---
+
+## 🎯 Purpose
+
+Confessly is built to allow people to **share thoughts freely and anonymously**, without pressure or identity exposure.
+
+---
+
+## 👨‍💻 Author
+
+**Mishal R**
+
+Computer Science Engineering Student – CUSAT
+GitHub: https://github.com/Mishalr7
