@@ -10,7 +10,7 @@ It creates a small safe space where anyone can express their thoughts without re
 
 Try it here:
 
-[text](https://confession-app-3w4h.onrender.com)
+(https://confession-app-3w4h.onrender.com)
 
 ---
 
